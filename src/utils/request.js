@@ -9,7 +9,6 @@ const axios = Axios.create({
     Toast.loading('Loading...', 1,null);
     return config
   },(error)=>{
-    // Toast.hide()
     return Promise.reject(error)
   })
 
@@ -17,7 +16,6 @@ const axios = Axios.create({
  axios.interceptors.response.use((response)=>{
   // 全局销毁
    Toast.hide()
-   console.log(response.data);
    return response.data
  },(error)=>{
    return Promise.reject(error)

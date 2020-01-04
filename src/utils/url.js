@@ -1,2 +1,2 @@
 
-export const API_URL= 'http://hkzf.zbztb.cn'
+export const API_URL= "http://hkzf.zbztb.cn"
