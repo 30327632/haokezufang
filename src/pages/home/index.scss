@@ -1,0 +1,64 @@
+// 头部搜搜
+.header{
+    margin:0 10px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+     top:20px;
+     left:0px;
+    .search{
+        border-radius: 5px;
+        height: 34px;
+        margin:0 10px;
+        flex: 1;
+        display: flex;
+        line-height: 34px;
+        background-color: #fff;
+        .position{ 
+            padding:0px 10px;
+        }
+    }
+    .map{
+          width: 50px;
+          margin:0 auto;
+          color: #fff;
+          display: flex;
+        //   justify-content: center;
+          align-items: center;
+        //   text-align: center;
+        .icon-map{
+            font-size: 30px;
+            // padding:0 10px
+        }
+
+    }
+
+}
+
+// 租房例子
+.pics{
+    padding-top:10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .pics-item{
+        
+        flex:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        font-size: 13px;
+         img{
+            width:48px;
+        }
+        p{
+            
+            margin: 10;
+        }
+    }
+}
