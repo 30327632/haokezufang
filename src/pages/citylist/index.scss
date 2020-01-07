@@ -1,0 +1,43 @@
+.city{
+    height:calc(100vh - 45px)!important;
+    background-color: #fff;
+    .city_title{
+        font-size: 16px;
+        color:#ccc;
+        height: 40;
+        padding:17px 10px;
+    }
+    .city_item{        
+        padding:10px 10px;
+        line-height: 40px;
+        font-size: 18px;
+        border-bottom: 1px solid #ccc;
+    }
+    .ReactVirtualized__Grid,.ReactVirtualized__List{
+        height: calc(100vh - 45px) !important;
+    }
+}
+
+
+// 关键字渲染
+.keyList{
+    z-index: 999;
+    position: fixed;
+    top:50px;
+    right: 5px;
+  
+
+    .key_item{
+        font-size: 14px;
+        margin:15px 0;
+        text-align: center;
+        font-family: "Microsoft YaHei";
+        
+    }
+    div.active{
+          color: #fff;
+          background-color: #21b97a;
+          border-radius: 50%;
+    }
+}
+

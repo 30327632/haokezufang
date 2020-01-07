@@ -25,6 +25,7 @@ import {withRouter} from "react-router-dom"
             selectedIcon={<i className="iconfont icon-ind"></i>}
             selected={this.props.match.path === '/'}
             onPress={() => {
+                // console.log(this);
                 this.props.history.push("/")
             }}
           >
@@ -46,7 +47,7 @@ import {withRouter} from "react-router-dom"
                 this.props.history.push("/list")
             }}
           >
-            {this.props.match.path === '/'&&this.props.children}
+            {this.props.match.path === '/list'&&this.props.children}
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -62,7 +63,7 @@ import {withRouter} from "react-router-dom"
                 this.props.history.push("/profile")
             }}
           >
-            {this.props.match.path === '/'&&this.props.children}
+            {this.props.match.path === '/profile'&&this.props.children}
           </TabBar.Item>
           <TabBar.Item
             icon={<i className="
@@ -76,7 +77,7 @@ import {withRouter} from "react-router-dom"
                 this.props.history.push("/info")
             }}
           >
-            {this.props.match.path === '/'&&this.props.children}
+            {this.props.match.path === '/info'&&this.props.children}
           </TabBar.Item>
         </TabBar>
       </div>

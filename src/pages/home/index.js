@@ -21,6 +21,11 @@ export default class Index extends Component {
     group: [],
     newsList: []
   }
+    toCity=(props)=>{
+      this.props.history.push("/citylist")
+      //  console.log(this);
+    }
+  
   componentDidMount() {
     // 获取轮播图的数据
     axios.get("/home/swiper").then((res) => {
@@ -50,8 +55,8 @@ export default class Index extends Component {
         {/* 头部搜索 */}
         <div className="header">
           <div className="search">
-            <div className="position">
-              <span>上海</span>
+            <div className="position" onClick={this.toCity}>
+              <span style={{fontSize:"16px"}}>上海</span>
               <i className="iconfont icon-arrow"></i>
             </div>
             <div className="input" ><i className="iconfont icon-seach"></i></div>
