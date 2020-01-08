@@ -4,7 +4,13 @@ import axios from "../../utils/request"
 import { NavBar, Icon } from 'antd-mobile';
 import { AutoSizer, List } from 'react-virtualized';
 import 'react-virtualized/styles.css';
-export default class index extends Component {
+import {withRouter} from "react-router-dom"
+class index extends Component {
+    //在构造函数中添加一个ref指向
+    constructor(props){
+       super(props)
+       this.myRef =React.createRef()
+    }
     state = {
         all_city: [],
         hotCityList: [],
@@ -12,7 +18,14 @@ export default class index extends Component {
         key_list: [],
         selected:0
     }
-
+    selectCity(cityName){
+        //点击城市的时候 或取城市名  并跳到首页
+        //把城市名存到仓库  
+        localStorage.setItem("cityName",cityName)
+        this.props.history.push("./")
+    }
+ 
+    
     getRowHeight = ({ index }) => { //一行的高度  获取那个索引的那项的高度
         var item = this.state.all_city[index]
         return (Object.values(item)[0].length + 1) * 60
@@ -25,7 +38,7 @@ export default class index extends Component {
             <div className="city" key={key} style={style}>
                 <div className="city_title">{title}</div>
                 {//渲染文本
-                    list.map((v, i) => <div className="city_item" key={i}>
+                    list.map((v, i) => <div className="city_item" onClick={this.selectCity.bind(this,v)} key={i}>
                         {v}
                     </div>)
                 }
@@ -77,6 +90,22 @@ export default class index extends Component {
     componentDidMount = () => {
         this.getAllCity()
     }
+    
+    //当点击右侧  列表适应相应的城市
+    fixLetter(index){
+    this.myRef.current.scrollToRow(index)
+    this.setState({
+        selected:index
+    })
+    }
+
+    onRowsRendered=({ overscanStartIndex, overscanStopIndex, startIndex, stopIndex })=>{{
+        this.setState({
+            selected:startIndex
+        })
+    }}
+
+
 
     render() {
         return (
@@ -91,17 +120,21 @@ export default class index extends Component {
                 {/* 关键字渲染 */}
                 <div className="keyList">
                     {
-                        this.state.key_list.map((v, i) => <div className={this.state.selected===i?"key_item active":"key_item"} key={i}>{v}</div>)
+                        this.state.key_list.map((v, i) => <div onClick={this.fixLetter.bind(this,i)} className={this.state.selected===i?"key_item active":"key_item"} key={i}>{v}</div>)
                     }
                 </div>
-                <AutoSizer className="city">
+                <AutoSizer className="city" onResize={this.handleIndex}>
                     {({ height, width }) => (
                         <List
+                            ref={this.myRef}   //当点击关键点的时候 获取这个标签  调用方法
                             height={height}
+                            autoHeight={false}
                             rowCount={this.state.all_city.length}  //有多少行
                             rowHeight={this.getRowHeight}
                             rowRenderer={this.rowRenderer}
                             width={width}
+                            scrollToAlignment="start"
+                            onRowsRendered={this.onRowsRendered}
                         />
                     )}
                 </AutoSizer>
@@ -110,3 +143,5 @@ export default class index extends Component {
         )
     }
 }
+
+export default withRouter(index)  //路由挂载  跳到首页

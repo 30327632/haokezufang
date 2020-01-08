@@ -56,7 +56,7 @@ export default class Index extends Component {
         <div className="header">
           <div className="search">
             <div className="position" onClick={this.toCity}>
-              <span style={{fontSize:"16px"}}>上海</span>
+    <span style={{fontSize:"16px"}}>{localStorage.getItem("cityName")||"广州"}</span>
               <i className="iconfont icon-arrow"></i>
             </div>
             <div className="input" ><i className="iconfont icon-seach"></i></div>
